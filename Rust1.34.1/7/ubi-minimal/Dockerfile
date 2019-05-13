@@ -1,0 +1,12 @@
+FROM registry.access.redhat.com/ubi7/ubi-minimal@sha256:9e2cec104a77b76e6c343f67bd058005dc64d573fccf339c24cf79013ff8e7f3
+
+LABEL maintainer="Jordan Gregory <jordan@gregory-dev.io>" \
+      repository="https://github.com/Gregory-Development/ubi-go" \
+      version="1.0.0"
+
+RUN curl https://sh.rustup.rs -o /tmp/rustup.sh \
+  && sh /tmp/rustup.sh -y
+
+ENV PATH=$PATH:$HOME/.cargo/bin
+
+ENTRYPOINT ["/bin/bash"]
